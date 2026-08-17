@@ -1,13 +1,11 @@
 # 🏦 Aurum Bank Assistant
 
-O **Aurum Bank Assistant** é um assistente virtual desenvolvido para auxiliar clientes de um banco digital, respondendo dúvidas de forma rápida e contextualizada a partir de uma base de conhecimento própria.
+O **Aurum Bank Assistant** é um assistente virtual desenvolvido para auxiliar funcionários de um banco digital, respondendo dúvidas de forma rápida e contextualizada a partir de uma base de conhecimento própria.
 
 ## 🚀 Demonstração
 
 **Acesse o aplicativo:**
 [🔗 Aurum Bank Assistant](COLE_AQUI_O_LINK_DO_STREAMLIT)
-
-![Aurum Bank Assistant](screenshot.png)
 
 ## 💡 Sobre o aplicativo
 
@@ -88,32 +86,37 @@ Por fim, a resposta retorna para o Streamlit e é apresentada ao usuário na int
 ### 🔄 Resumindo o fluxo
 
 ```text
-                 BASE DE CONHECIMENTO
-                         │
-                         ▼
-              Documentos → Embeddings
-                         │
-                         ▼
-                      FAISS
-                         │
-                         │
-                         ▼
-USUÁRIO ──────→ PERGUNTA ──────→ BUSCA SEMÂNTICA
-                                      │
-                                      ▼
-                              CONTEXTO RELEVANTE
-                                      │
-                                      ▼
-                           LLAMA 3.3 + CONTEXTO
-                                      │
-                                      ▼
-                                  RESPOSTA
-                                      │
-                                      ▼
-                                  STREAMLIT
-                                      │
-                                      ▼
-                                   USUÁRIO
+┌──────────────────────┐
+│       Usuário        │
+│   envia uma pergunta │
+└──────────┬───────────┘
+           ↓
+┌──────────────────────┐
+│      Streamlit       │
+│ recebe a pergunta   │
+└──────────┬───────────┘
+           ↓
+┌──────────────────────┐
+│     Aurum Agent      │
+│  processa a consulta │
+└──────────┬───────────┘
+           ↓
+┌──────────────────────┐
+│      VectorStore      │
+│ busca contexto        │
+│     relevante         │
+└──────────┬───────────┘
+           ↓
+┌──────────────────────┐
+│      Llama 3.3        │
+│ recebe pergunta +    │
+│      contexto         │
+└──────────┬───────────┘
+           ↓
+┌──────────────────────┐
+│       Resposta        │
+│  exibida ao usuário   │
+└──────────────────────┘
 ```
 
 Dessa forma, o modelo não depende apenas do conhecimento geral que possui. Ele recebe informações recuperadas especificamente da base do Aurum Bank, tornando o processo mais direcionado ao contexto da aplicação.
