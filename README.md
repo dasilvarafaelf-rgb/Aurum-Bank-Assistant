@@ -85,38 +85,28 @@ Por fim, a resposta retorna para o Streamlit e é apresentada ao usuário na int
 
 ### 🔄 Resumindo o fluxo
 
-```text
-┌──────────────────────┐
-│       Usuário        │
-│   envia uma pergunta │
-└──────────┬───────────┘
-           ↓
-┌──────────────────────┐
-│      Streamlit       │
-│ recebe a pergunta   │
-└──────────┬───────────┘
-           ↓
-┌──────────────────────┐
-│     Aurum Agent      │
-│  processa a consulta │
-└──────────┬───────────┘
-           ↓
-┌──────────────────────┐
-│      VectorStore      │
-│ busca contexto        │
-│     relevante         │
-└──────────┬───────────┘
-           ↓
-┌──────────────────────┐
-│      Llama 3.3        │
-│ recebe pergunta +    │
-│      contexto         │
-└──────────┬───────────┘
-           ↓
-┌──────────────────────┐
-│       Resposta        │
-│  exibida ao usuário   │
-└──────────────────────┘
+```mermaid
+flowchart TD
+    A(["👤 Usuário<br/>envia uma pergunta"])
+    B["🖥️ Streamlit<br/>recebe a pergunta"]
+    C["🤖 Aurum Agent<br/>processa a consulta"]
+    D[("🔍 VectorStore<br/>busca contexto relevante")]
+    E["🧠 Llama 3.3<br/>pergunta + contexto"]
+    F(["💬 Resposta<br/>exibida ao usuário"])
+
+    A --> B --> C --> D --> E --> F
+
+    classDef userStyle fill:#6366f1,stroke:#4338ca,color:#fff,stroke-width:2px,rx:10,ry:10
+    classDef appStyle fill:#0ea5e9,stroke:#0369a1,color:#fff,stroke-width:2px
+    classDef agentStyle fill:#f59e0b,stroke:#b45309,color:#fff,stroke-width:2px
+    classDef dataStyle fill:#10b981,stroke:#047857,color:#fff,stroke-width:2px
+    classDef llmStyle fill:#ec4899,stroke:#be185d,color:#fff,stroke-width:2px
+
+    class A,F userStyle
+    class B appStyle
+    class C agentStyle
+    class D dataStyle
+    class E llmStyle
 ```
 
 Dessa forma, o modelo não depende apenas do conhecimento geral que possui. Ele recebe informações recuperadas especificamente da base do Aurum Bank, tornando o processo mais direcionado ao contexto da aplicação.
