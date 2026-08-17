@@ -1,107 +1,155 @@
 # 🏦 Aurum Bank Assistant
 
-Assistente virtual desenvolvido para auxiliar clientes do **Aurum Bank** com informações e dúvidas relacionadas aos serviços bancários.
+O **Aurum Bank Assistant** é um assistente virtual desenvolvido para auxiliar clientes de um banco digital, respondendo dúvidas de forma rápida e contextualizada a partir de uma base de conhecimento própria.
 
 ## 🚀 Demonstração
 
 **Acesse o aplicativo:**
 [🔗 Aurum Bank Assistant](COLE_AQUI_O_LINK_DO_STREAMLIT)
 
-<!-- Depois de enviar seu print para o GitHub, você pode colocar a imagem aqui:
 ![Aurum Bank Assistant](screenshot.png)
--->
 
-## 💡 Sobre o projeto
+## 💡 Sobre o aplicativo
 
-O Aurum Bank Assistant utiliza **Inteligência Artificial** para responder perguntas relacionadas ao banco a partir de uma base de documentos.
+O Aurum Bank Assistant funciona como um atendente virtual capaz de interpretar perguntas dos usuários e consultar uma base de conhecimento antes de gerar uma resposta.
 
-O projeto utiliza uma arquitetura baseada em **RAG (Retrieval-Augmented Generation)**, permitindo que o modelo consulte informações relevantes antes de gerar uma resposta.
+A aplicação utiliza **RAG (Retrieval-Augmented Generation)** para combinar a recuperação de informações relevantes com um modelo de linguagem, permitindo que as respostas sejam baseadas nos conteúdos disponíveis sobre o banco.
 
-## 🛠️ Tecnologias utilizadas
+### ✨ Principais funcionalidades
 
-* Python
-* Streamlit
-* LangChain
-* Groq
-* Llama 3.3
-* Hugging Face
-* FAISS
-* Python-dotenv
+* 💬 Conversação em linguagem natural
+* 🔎 Busca semântica na base de conhecimento
+* 🤖 Geração de respostas utilizando Llama 3.3
+* 🏦 Respostas baseadas nos documentos do Aurum Bank
+* ⚡ Interface interativa desenvolvida com Streamlit
+
+## 🧠 Fluxo da aplicação
+
+O funcionamento do Aurum Bank Assistant pode ser dividido em duas etapas principais: **construção da base de conhecimento** e **processamento das perguntas do usuário**.
+
+### 1. 📚 Construção da base de conhecimento
+
+Antes das perguntas chegarem ao assistente, os documentos disponibilizados pelo banco são processados pelo `ingest.py`.
+
+O fluxo acontece da seguinte maneira:
+
+```text
+Documentos do banco
+        ↓
+Leitura dos arquivos
+        ↓
+Divisão dos documentos em trechos
+        ↓
+Geração dos embeddings
+        ↓
+Armazenamento no FAISS
+        ↓
+VectorStore
+```
+
+Os documentos são transformados em pequenos trechos para facilitar a recuperação das informações. Cada trecho recebe uma representação vetorial (*embedding*), permitindo que o sistema encontre conteúdos semanticamente relacionados a uma pergunta.
+
+Esses vetores são armazenados no **FAISS**, formando o `vectorstore` utilizado pelo assistente.
+
+### 2. 💬 Processamento da pergunta
+
+Quando o usuário envia uma pergunta pelo Streamlit, ela passa pelo fluxo principal do `agente_aurum.py`.
+
+```text
+Usuário
+   ↓
+Interface Streamlit
+   ↓
+Pergunta enviada ao agente
+   ↓
+Busca no VectorStore
+   ↓
+Trechos relevantes recuperados
+   ↓
+Contexto + pergunta
+   ↓
+Llama 3.3 via Groq
+   ↓
+Resposta gerada
+   ↓
+Exibição no Streamlit
+```
+
+Primeiramente, a pergunta é recebida pelo aplicativo e encaminhada para o agente.
+
+O agente utiliza o **VectorStore** para realizar uma busca semântica e recuperar os trechos da base de conhecimento que possuem maior relação com a pergunta.
+
+Esses conteúdos recuperados são então utilizados como **contexto** para o modelo de linguagem.
+
+A pergunta do usuário e o contexto encontrado são enviados ao **Llama 3.3**, executado através da API da **Groq**. O modelo utiliza essas informações para elaborar a resposta final.
+
+Por fim, a resposta retorna para o Streamlit e é apresentada ao usuário na interface de conversa.
+
+### 🔄 Resumindo o fluxo
+
+```text
+                 BASE DE CONHECIMENTO
+                         │
+                         ▼
+              Documentos → Embeddings
+                         │
+                         ▼
+                      FAISS
+                         │
+                         │
+                         ▼
+USUÁRIO ──────→ PERGUNTA ──────→ BUSCA SEMÂNTICA
+                                      │
+                                      ▼
+                              CONTEXTO RELEVANTE
+                                      │
+                                      ▼
+                           LLAMA 3.3 + CONTEXTO
+                                      │
+                                      ▼
+                                  RESPOSTA
+                                      │
+                                      ▼
+                                  STREAMLIT
+                                      │
+                                      ▼
+                                   USUÁRIO
+```
+
+Dessa forma, o modelo não depende apenas do conhecimento geral que possui. Ele recebe informações recuperadas especificamente da base do Aurum Bank, tornando o processo mais direcionado ao contexto da aplicação.
+
+## 🛠️ Tecnologias
+
+* **Python** — desenvolvimento da aplicação
+* **Streamlit** — interface web
+* **LangChain** — integração e gerenciamento do fluxo de IA
+* **Groq** — execução do modelo de linguagem
+* **Llama 3.3** — modelo utilizado para geração das respostas
+* **Hugging Face** — geração dos embeddings
+* **FAISS** — armazenamento e busca vetorial
 
 ## 📂 Estrutura do projeto
 
 ```text
 Aurum-Bank-Assistant/
-├── files/                  # Documentos utilizados pelo assistente
-├── vectorstore/            # Base vetorial gerada a partir dos documentos
-├── agente_aurum.py        # Lógica principal do assistente
-├── ingest.py              # Criação da base vetorial
-├── #Streamlit.py          # Aplicação Streamlit
-├── requirements.txt       # Dependências do projeto
-└── .gitignore             # Arquivos ignorados pelo Git
+├── files/                  # Base de documentos do banco
+├── vectorstore/            # Base vetorial
+├── agente_aurum.py        # Lógica do assistente
+├── ingest.py              # Processamento dos documentos
+├── #Streamlit.py          # Interface da aplicação
+├── requirements.txt       # Dependências
+└── .gitignore
 ```
 
-## ⚙️ Como executar localmente
+## 🎯 Objetivo
 
-### 1. Clone o repositório
+O projeto foi desenvolvido como uma aplicação prática de **Inteligência Artificial Generativa**, explorando RAG, embeddings, busca vetorial e integração com modelos de linguagem.
 
-```bash
-git clone https://github.com/dasilvarafaelf-rgb/Aurum-Bank-Assistant.git
-cd Aurum-Bank-Assistant
-```
-
-### 2. Instale as dependências
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Configure a chave da Groq
-
-Crie um arquivo `.env` na raiz do projeto:
-
-```env
-GROQ_API_KEY=sua_chave_aqui
-```
-
-### 4. Gere o VectorStore
-
-```bash
-python ingest.py
-```
-
-### 5. Execute o aplicativo
-
-```bash
-streamlit run "#Streamlit.py"
-```
-
-## 🔐 Variáveis de ambiente
-
-O projeto utiliza:
-
-```text
-GROQ_API_KEY
-```
-
-**Não compartilhe sua chave de API nem envie o arquivo `.env` para o GitHub.**
-
-No Streamlit Cloud, a chave deve ser configurada através dos **Secrets** da aplicação.
-
-## 📌 Observações
-
-O `vectorstore/` precisa estar disponível para que o assistente consiga consultar a base de conhecimento.
-
-Caso os documentos da pasta `files/` sejam alterados, execute novamente:
-
-```bash
-python ingest.py
-```
-
-para atualizar a base vetorial.
+A proposta é demonstrar como essas tecnologias podem ser combinadas para criar um assistente especializado, capaz de consultar uma base de conhecimento específica e transformar as informações encontradas em respostas naturais para o usuário.
 
 ## 👨‍💻 Autor
 
 **Rafael da Silva**
 
 [GitHub](https://github.com/dasilvarafaelf-rgb)
+
