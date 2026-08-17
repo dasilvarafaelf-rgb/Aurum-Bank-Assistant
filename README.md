@@ -21,6 +21,112 @@ A aplicação utiliza **RAG (Retrieval-Augmented Generation)** para combinar a r
 * 🏦 Respostas baseadas nos documentos do Aurum Bank
 * ⚡ Interface interativa desenvolvida com Streamlit
 
+## ⚙️ Como executar o projeto localmente
+
+[#️-como-executar-o-projeto](#️-como-executar-o-projeto)
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/dasilvarafaelf-rgb/Aurum-Bank-Assistant.git
+cd Aurum-Bank-Assistant
+```
+
+### 2. Crie um ambiente virtual (opcional, mas recomendado)
+
+```bash
+python -m venv venv
+venv\Scripts\activate      # Windows
+source venv/bin/activate   # Linux/Mac
+```
+
+### 3. Instale as dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure sua chave de API
+
+Crie um arquivo `.env` na raiz do projeto com sua chave da Groq:
+
+GROQ_API_KEY= "sua_chave_aqui"
+
+### 5. Gere a base vetorial
+
+Antes de rodar o assistente pela primeira vez (ou sempre que os documentos em `files/` forem atualizados), execute:
+
+```bash
+python ingest.py
+```
+
+Isso lê os documentos da pasta `files/`, gera os embeddings e salva a base vetorial em `vectorstore/`.
+
+### 6. Inicie a aplicação
+
+```bash
+streamlit run "#Streamlit.py"
+```
+
+A aplicação abrirá automaticamente no navegador, geralmente em `http://localhost:8501`.
+
+## 💬 Exemplos de perguntas que o agente consegue responder
+
+[#-exemplos-de-perguntas-que-o-agente-consegue-responder](#-exemplos-de-perguntas-que-o-agente-consegue-responder)
+
+O Aurum Bank Assistant responde a perguntas relacionadas às políticas e procedimentos internos do banco, cobrindo áreas como RH, Compliance, TI, Comercial, Financeiro e normas institucionais. Alguns exemplos:
+
+- "Quais são as políticas de home office da empresa?"
+- "Como funciona o processo de aprovação de crédito?"
+- "Quais são as normas de segurança da informação da TI?"
+- "Qual o procedimento em caso de suspeita de fraude?"
+- "Quais benefícios os colaboradores têm direito?"
+
+## 📋 Exemplos de respostas geradas pelo agente
+
+[#-exemplos-de-respostas-geradas-pelo-agente](#-exemplos-de-respostas-geradas-pelo-agente)
+
+**Pergunta:** "                           
+
+Quais são as políticas de home office da empresa?
+
+
+**Resposta:**
+>Prezado colaborador,
+
+>Agradeço sua pergunta sobre as políticas de home office da empresa. De acordo com as diretrizes da empresa, os colaboradores em modelo >híbrido ou remoto têm direito a auxílio home office, pago mensalmente via folha.
+
+>Além disso, conforme a política de Recursos Humanos, o modelo híbrido padrão da empresa estabelece um mínimo de 2 dias presenciais por >semana para áreas administrativas, definidos por cada diretoria. A jornada de trabalho é de 40 horas semanais, com banco de horas para >compensação de eventuais extrapolações.
+
+>É importante notar que áreas de atendimento e operações críticas seguem escalas específicas, publicadas com no mínimo 15 dias de >antecedência.
+
+>Se tiver mais alguma dúvida relacionada às políticas ou procedimentos internos, estou à disposição para ajudar.
+>
+> Atenciosamente,
+> Aurum Bank Assistant
+
+> 💡 As respostas são geradas exclusivamente com base nos documentos internos carregados na base de conhecimento — quando a informação não está disponível, o assistente informa isso claramente em vez de inventar uma resposta.
+
+**Pergunta:** "
+
+Como funciona o processo de aprovação de crédito?
+
+**Resposta:**
+
+> Prezado colaborador,
+
+Agradeço sua pergunta sobre o processo de aprovação de crédito no Banco Aurum Digital. De acordo com as diretrizes da empresa, o processo de aprovação de crédito envolve várias etapas para garantir que as decisões sejam tomadas de forma responsável e transparente.
+
+Conforme a política de crédito da empresa, o processo começa com a avaliação da capacidade de pagamento do cliente, seguida pela análise de crédito e, por fim, a aprovação ou não do crédito. É importante notar que a empresa segue um modelo analítico de crédito e risco que utiliza machine learning para tomar decisões de crédito, mas essas decisões sempre passam por validação humana responsável.
+
+Além disso, a empresa tem como política evitar incentivos a vendas inadequadas, garantindo que as metas de volume nunca representem mais de 60% do peso total da avaliação. Isso ajuda a assegurar que os colaboradores não sejam incentivados a vender produtos de crédito sem considerar a capacidade de pagamento do cliente.
+
+Com base na política interna, é vedada qualquer meta ou bonificação individual vinculada à venda de produtos de crédito sem análise de capacidade de pagamento do cliente. Essa abordagem reforça o compromisso da empresa em promover práticas responsáveis de crédito e proteger os interesses dos clientes.
+
+Se tiver mais alguma dúvida relacionada às políticas ou procedimentos internos, estou à disposição para ajudar.
+
+Atenciosamente,
+
 ## 🧠 Fluxo da aplicação
 
 O funcionamento do Aurum Bank Assistant pode ser dividido em duas etapas principais: **construção da base de conhecimento** e **processamento das perguntas do usuário**.
