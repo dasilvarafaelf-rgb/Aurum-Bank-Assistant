@@ -5,7 +5,7 @@ O **Aurum Bank Assistant** é um assistente virtual desenvolvido para auxiliar f
 ## 🚀 Demonstração
 
 **Acesse o aplicativo:**
-[🔗 Aurum Bank Assistant](COLE_AQUI_O_LINK_DO_STREAMLIT)
+[🔗 Aurum Bank Assistant](https://aurum-bank-assistant-eepcopvxw2cj4nu55agmqk.streamlit.app/)
 
 ## 💡 Sobre o aplicativo
 
