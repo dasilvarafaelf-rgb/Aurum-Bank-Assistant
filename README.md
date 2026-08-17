@@ -93,13 +93,13 @@ Quais são as políticas de home office da empresa?
 
 **Resposta:**
 >Prezado colaborador,
-
+>
 >Agradeço sua pergunta sobre as políticas de home office da empresa. De acordo com as diretrizes da empresa, os colaboradores em modelo >híbrido ou remoto têm direito a auxílio home office, pago mensalmente via folha.
-
+>
 >Além disso, conforme a política de Recursos Humanos, o modelo híbrido padrão da empresa estabelece um mínimo de 2 dias presenciais por >semana para áreas administrativas, definidos por cada diretoria. A jornada de trabalho é de 40 horas semanais, com banco de horas para >compensação de eventuais extrapolações.
-
+>
 >É importante notar que áreas de atendimento e operações críticas seguem escalas específicas, publicadas com no mínimo 15 dias de >antecedência.
-
+>
 >Se tiver mais alguma dúvida relacionada às políticas ou procedimentos internos, estou à disposição para ajudar.
 >
 > Atenciosamente,
@@ -114,18 +114,18 @@ Como funciona o processo de aprovação de crédito?
 **Resposta:**
 
 > Prezado colaborador,
-
-Agradeço sua pergunta sobre o processo de aprovação de crédito no Banco Aurum Digital. De acordo com as diretrizes da empresa, o processo de aprovação de crédito envolve várias etapas para garantir que as decisões sejam tomadas de forma responsável e transparente.
-
-Conforme a política de crédito da empresa, o processo começa com a avaliação da capacidade de pagamento do cliente, seguida pela análise de crédito e, por fim, a aprovação ou não do crédito. É importante notar que a empresa segue um modelo analítico de crédito e risco que utiliza machine learning para tomar decisões de crédito, mas essas decisões sempre passam por validação humana responsável.
-
-Além disso, a empresa tem como política evitar incentivos a vendas inadequadas, garantindo que as metas de volume nunca representem mais de 60% do peso total da avaliação. Isso ajuda a assegurar que os colaboradores não sejam incentivados a vender produtos de crédito sem considerar a capacidade de pagamento do cliente.
-
-Com base na política interna, é vedada qualquer meta ou bonificação individual vinculada à venda de produtos de crédito sem análise de capacidade de pagamento do cliente. Essa abordagem reforça o compromisso da empresa em promover práticas responsáveis de crédito e proteger os interesses dos clientes.
-
-Se tiver mais alguma dúvida relacionada às políticas ou procedimentos internos, estou à disposição para ajudar.
-
-Atenciosamente,
+>
+>Agradeço sua pergunta sobre o processo de aprovação de crédito no Banco Aurum Digital. De acordo com as diretrizes da empresa, o >processo de aprovação de crédito envolve várias etapas para garantir que as decisões sejam tomadas de forma responsável e transparente.
+>
+>Conforme a política de crédito da empresa, o processo começa com a avaliação da capacidade de pagamento do cliente, seguida pela >análise de crédito e, por fim, a aprovação ou não do crédito. É importante notar que a empresa segue um modelo analítico de crédito e >risco que utiliza machine learning para tomar decisões de crédito, mas essas decisões sempre passam por validação humana responsável.
+>
+>Além disso, a empresa tem como política evitar incentivos a vendas inadequadas, garantindo que as metas de volume nunca representem >mais de 60% do peso total da avaliação. Isso ajuda a assegurar que os colaboradores não sejam incentivados a vender produtos de >crédito sem considerar a capacidade de pagamento do cliente.
+>
+>Com base na política interna, é vedada qualquer meta ou bonificação individual vinculada à venda de produtos de crédito sem análise de >capacidade de pagamento do cliente. Essa abordagem reforça o compromisso da empresa em promover práticas responsáveis de crédito e >proteger os interesses dos clientes.
+>
+>Se tiver mais alguma dúvida relacionada às políticas ou procedimentos internos, estou à disposição para ajudar.
+>
+>Atenciosamente,
 
 ## 🧠 Fluxo da aplicação
 
